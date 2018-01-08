@@ -29,7 +29,7 @@ public class CodeControllerTest {
 
     }
 
-    @Test
+//    @Test
     public void 코드조회결과값비교_정상() {
         ResponseEntity<String> response   = template.getForEntity("/codes", String.class);
         HttpStatus             statusCode = response.getStatusCode();
