@@ -21,6 +21,11 @@ public class CodeService extends BaseService {
     }
 
     public void postCode(Code code) {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         repoCode.save(code);
     }
 }
