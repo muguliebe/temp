@@ -4,7 +4,7 @@ import lombok.Data;
 import org.springframework.stereotype.Component;
 
 @Data
-@Component(value = "commons")
+@Component
 public class Commons {
     CommonArea area;
 }

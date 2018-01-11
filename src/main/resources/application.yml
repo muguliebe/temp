@@ -12,6 +12,9 @@ maria:
   maxWait: 3000
 
 spring:
+ devtools:
+  livereload:
+    enabled: false
  jpa:
   show-sql: true
   generate-ddl: true
