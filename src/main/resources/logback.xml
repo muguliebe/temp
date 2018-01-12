@@ -1,0 +1,39 @@
+<configuration scan="true" scanPeriod="3 seconds">
+
+    <!-- property -->
+    <property name="logHome"   value="log/"/>
+    <timestamp key="bySecond"  datePattern="yyyyMMddHHmmss"/>
+
+
+
+    <!-- appenders -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %highlight(%-5level) [%cyan(%c):%L] %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- File Appender - Server Log -->
+    <appender name="appenderServer" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${logHome}server.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${logHome}server.log.%d{yyMMdd}</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>[%d{HH:mm:ss.SSS}:%-5p:%c{0}:%L] %m%n</pattern>
+        </encoder>
+    </appender>
+
+
+    <!-- 3rd party log level -->
+    <logger name="org.hibernate" level="info" additivity="true"/>
+    <logger name="org.springframework" level="info"/>
+
+
+    <!-- root -->
+    <root level="debug">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="appenderServer"/>
+    </root>
+</configuration>

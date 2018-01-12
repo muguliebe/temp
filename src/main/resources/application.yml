@@ -2,9 +2,9 @@
 maria:
  primary:
   driverClassName: "org.mariadb.jdbc.Driver"
-  url: "jdbc:mariadb://n1.egstep.com:3306/test"
-  userName: "test"
-  password: "test"
+  url: "jdbc:mariadb://n1.egstep.com:3306/test4"
+  userName: "test4"
+  password: "test4"
   initialSize: 10
   maxActive: 10
   maxIdle: 10

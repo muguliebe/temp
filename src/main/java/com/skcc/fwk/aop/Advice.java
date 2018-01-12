@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.UUID;
 
 @Aspect
 @Component
@@ -56,6 +57,9 @@ public class Advice {
         area.setIp(request.getRemoteAddr());
         area.setUrl(request.getRequestURI());
 
+        String gid = UUID.randomUUID().toString();
+        area.setGid(gid);
+
         try {
 
             //
@@ -78,6 +82,7 @@ public class Advice {
 
         // 거래내역 DB 저장
         Transaction transaction = Transaction.builder()
+                .gid(area.getGid())
                 .day(area.getDate())
                 .time(area.getTime())
                 .ip(area.getIp())

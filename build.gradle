@@ -41,6 +41,8 @@ dependencies {
     // etc
     compile group: 'org.projectlombok', name: 'lombok', version: '1.16.16'
     compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.2.4'
+    compile group: 'ch.qos.logback', name: 'logback-classic'
+
 
 
     // for test
