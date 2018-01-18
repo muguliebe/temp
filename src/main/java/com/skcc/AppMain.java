@@ -20,7 +20,6 @@ public class AppMain {
 
         Arrays.sort(beanDefinitionNames);
         for (String name : beanDefinitionNames) {
-            System.out.println("name = " + name);
             log.debug("name: {}" ,name);
         }
     }
