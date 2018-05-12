@@ -6,6 +6,7 @@ import com.skcc.start.entity.common.Code;
 import com.skcc.start.repository.jpa.CodeRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,8 +16,6 @@ import java.util.List;
 
 @Service
 public class CodeService extends BaseService {
-
-    protected static Logger log = (Logger) LoggerFactory.getLogger("eachService"); // 서비스 로그
 
     @Autowired
     CodeRepository repoCode;

@@ -10,4 +10,8 @@ public class PointCutList {
     public void controllers() {
     }
 
+    @Pointcut("execution(* com.skcc..service..*.*(..))")
+    public void service() {
+    }
+
 }

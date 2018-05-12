@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
@@ -37,9 +38,9 @@ public class Advice {
         Object obj;
 
         // CommonArea Setting
-        Commons    commons = context.getBean("commons", Commons.class);
+        Commons commons = context.getBean("commons", Commons.class);
         commons.setArea(new CommonArea());
-        CommonArea area    = commons.getArea();
+        CommonArea area = commons.getArea();
 
         // Set Date "yyMMdd" pattern
         Date             currentTime = new Date();
@@ -73,7 +74,7 @@ public class Advice {
             long end = System.currentTimeMillis();
 
             log.info("end: " + (end - start) + "ms");
-            area.setElapsed((end-start));
+            area.setElapsed((end - start));
 
         } catch (Throwable e) {
             throw e;
@@ -95,5 +96,32 @@ public class Advice {
 
 
         return obj;
+    }
+
+    @Around("PointCutList.service()")
+    public Object aroundLogService(ProceedingJoinPoint pjp) throws Throwable {
+
+        log.debug(pjp.getSignature().getDeclaringType().getName());
+
+        Date             currentTime = new Date();
+        SimpleDateFormat formatter   = new SimpleDateFormat("yyMMdd", Locale.KOREA);
+
+        String fileName = pjp.getSignature().getDeclaringType().getSimpleName();
+        fileName += "." + formatter.format(currentTime);
+
+        String bfFileName = MDC.get("logServiceFileName"); // <----
+        MDC.put("logServiceFileName", fileName);
+
+        Object obj = pjp.proceed();
+
+        if (bfFileName == null) {
+            MDC.remove("logServiceFileName");
+        } else{
+            MDC.put("logServiceFileName", bfFileName);
+        }
+
+
+        return obj;
+
     }
 }

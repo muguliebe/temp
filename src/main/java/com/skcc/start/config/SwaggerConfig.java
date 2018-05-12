@@ -25,7 +25,7 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
 //                .apis(RequestHandlerSelectors.any())
-//                .apis(RequestHandlerSelectors.basePackage("com.egstep"))
+                .apis(RequestHandlerSelectors.basePackage("com.skcc"))
 //                .apis(Predicates.not(RequestHandlerSelectors.basePackage("org.springframework.boot")))
 //                .paths(PathSelectors.regex("(?!/error).+"))
 //                .paths(PathSelectors.regex("(?!/system).+"))

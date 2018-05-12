@@ -4,6 +4,7 @@ buildscript {
     }
     repositories {
         mavenCentral()
+        maven { url 'https://jitpack.io' }
     }
     dependencies {
         classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
@@ -31,8 +32,6 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-aop')
     compile('org.springframework.boot:spring-boot-devtools')
 
-
-
     // maria with JPA
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
@@ -44,6 +43,8 @@ dependencies {
     compile group: 'ch.qos.logback', name: 'logback-classic'
     compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.7.0'
     compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.7.0'
+
+    compile 'com.github.muguliebe:zutil:'
 
 
 
